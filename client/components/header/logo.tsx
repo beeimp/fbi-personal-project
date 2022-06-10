@@ -1,11 +1,28 @@
-import React from 'react';
+import { css } from '@emotion/react';
+import { FunctionComponent } from 'react';
 
-const Logo:React.FC = () => {
-  return(
-    <div>
-      logo
-    </div>
-  )
+const headerTitleWrapperStyle = css`
+  
+`;
+
+const headerTitleStyle = css`
+  text-align: center;
+  font-size: 50px;
+  margin: 0;
+`
+
+interface HeaderTitleProps {
+  title: String;
 }
 
-export default Logo;
+const HeaderTitle: FunctionComponent<HeaderTitleProps> = ({ title }) => {
+  return (
+    <div>
+      <h3 css={headerTitleStyle}>
+        {title}
+      </h3>
+    </div>
+  );
+}
+
+export default HeaderTitle;
