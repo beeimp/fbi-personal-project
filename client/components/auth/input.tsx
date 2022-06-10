@@ -1,11 +1,13 @@
-import { FunctionComponent } from "react";
+import { ChangeEventHandler, FunctionComponent } from "react";
 import { css } from '@emotion/react';
 
 interface AuthInputProps {
   label: string;
+  name: string;
+  onChange: ChangeEventHandler;
 }
 
-const AuthInput: FunctionComponent<AuthInputProps> = ({label}) => {
+const AuthInput: FunctionComponent<AuthInputProps> = ({label, name, onChange}) => {
 
   const inputBoxWrapperStyle = css`
     display: flex;
@@ -33,7 +35,7 @@ const AuthInput: FunctionComponent<AuthInputProps> = ({label}) => {
   return (
     <div css={inputBoxWrapperStyle}>
       <label css={inputLabelStyle}>{label}</label>
-      <input css={inputStyle} placeholder={`${label}을 입력...`}></input>
+      <input css={inputStyle} name={name} onChange={onChange} placeholder={`${label}을 입력...`}></input>
     </div>
   );
 }

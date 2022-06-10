@@ -1,8 +1,9 @@
-import { FunctionComponent, ReactNode } from "react";
+import { FunctionComponent, MouseEventHandler, ReactNode } from "react";
 import { css } from '@emotion/react';
 
 interface AuthButtonProps {
   children: ReactNode
+  onClick?: MouseEventHandler
 }
 
 const buttonWrapperStyle = css`
@@ -25,10 +26,10 @@ const buttonStyle = css`
   }
 `
 
-const AuthButton: FunctionComponent<AuthButtonProps> = ({children}) => {
+const AuthButton: FunctionComponent<AuthButtonProps> = ({children, onClick=()=>{}}) => {
   return (
     <div css={buttonWrapperStyle}>
-      <button css={buttonStyle}>{children}</button>
+      <button css={buttonStyle} onClick={onClick}>{children}</button>
     </div>
   );
 }
