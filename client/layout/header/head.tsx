@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { FunctionComponent } from 'react';
 import { HeaderIconButton, HeaderLogo, HeaderWrapper } from '../../components/header';
 import { ProfileAvatar } from '../../components/profile';
@@ -11,10 +12,10 @@ interface HeaderProps {
 const HeaderLayout: FunctionComponent<HeaderProps> = ({ title }) => {
   return (
     <HeaderWrapper>
-      <HeaderLogo title={title}></HeaderLogo>
+        <Link href={"/"}><a><HeaderLogo title={title}></HeaderLogo></a></Link>
       <div className={style.buttonWrapper}>
-        <HeaderIconButton iconUrl='/home.png' size='40px'></HeaderIconButton>
-        <HeaderIconButton iconUrl='/send.png' size='40px'></HeaderIconButton>
+        <Link href="/"><a><HeaderIconButton iconUrl='/home.png' size='40px'></HeaderIconButton></a></Link>
+        <Link href="/message"><a><HeaderIconButton iconUrl='/send.png' size='40px'></HeaderIconButton></a></Link>
         <ProfileAvatar size='50px' ></ProfileAvatar>
       </div>
     </HeaderWrapper>
