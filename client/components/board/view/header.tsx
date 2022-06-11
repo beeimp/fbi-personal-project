@@ -10,12 +10,18 @@ const BoardViewHeader: FunctionComponent<BoardViewHeaderProps> = ({Avatar, Usera
 
   
   const wrapperStyle = css`
+    grid-row: 1/2;
+    grid-column: 1/2;
+
     display: flex;
-    height: 80px;
     justify-content: flex-start;
     align-items: center;
     border-bottom: 1px solid black;
     padding: 5px 20px;
+
+    @media screen and (min-width: 800px) {
+      grid-column: 2/3;
+    }
   `;
 
   return (
