@@ -6,6 +6,13 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
+  // Module not found: Can't resolve 'fs' (https://cocoon1787.tistory.com/851)
+  webpack5: true,
+  webpack: (config) => {
+    config.resolve.fallback = { fs: false };
+
+    return config;
+  },
   experimental: {
     emotion: true | {
       // default is true. It will be disabled when build type is production.
