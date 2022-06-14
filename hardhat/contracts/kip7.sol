@@ -50,6 +50,7 @@ contract DSGToken is KIP7 {
 
     // 환전
     function exchange() public payable {
+        require(msg.value > 0);
         _mint(msg.sender, msg.value * 10);
     }
 
