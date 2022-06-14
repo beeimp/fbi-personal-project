@@ -63,7 +63,7 @@ const Home: NextPage<HomeProps> = ({ isAuth, _contentList}) => {
       {isAuth
         ?
         <>
-          <Header title={"Desogram"}></Header>
+          <Header title={"DeSogram"}></Header>
           <BoardPreviewLayout contentList={contentList} setView={setView} setIsView={setIsView}></BoardPreviewLayout>
           {isView ? <BoardViewLayout contents={view} setIsView={setIsView}></BoardViewLayout> : undefined}
         </>
