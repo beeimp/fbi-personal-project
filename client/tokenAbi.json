@@ -150,11 +150,6 @@
         "type": "uint256"
       },
       {
-        "internalType": "address",
-        "name": "_writer",
-        "type": "address"
-      },
-      {
         "internalType": "uint256",
         "name": "_amount",
         "type": "uint256"
@@ -169,6 +164,25 @@
     "inputs": [
       {
         "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "commentOwner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
         "name": "_commentId",
         "type": "uint256"
       },
@@ -176,11 +190,6 @@
         "internalType": "uint256",
         "name": "_postId",
         "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "_writer",
-        "type": "address"
       },
       {
         "internalType": "uint256",
@@ -471,11 +480,6 @@
         "type": "uint256"
       },
       {
-        "internalType": "address",
-        "name": "_writer",
-        "type": "address"
-      },
-      {
         "internalType": "uint256",
         "name": "_amount",
         "type": "uint256"
@@ -490,13 +494,27 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "_postId",
+        "name": "",
         "type": "uint256"
-      },
+      }
+    ],
+    "name": "postOwner",
+    "outputs": [
       {
         "internalType": "address",
-        "name": "_writer",
+        "name": "",
         "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_postId",
+        "type": "uint256"
       },
       {
         "internalType": "uint256",
