@@ -1,4 +1,4 @@
-import { Dispatch, FunctionComponent, MouseEvent  ,MouseEventHandler, SetStateAction } from "react";
+import { Dispatch, FunctionComponent, MouseEvent, MouseEventHandler, SetStateAction } from "react";
 import { BoardPreview } from "../../components/board";
 import { BoardPreviewWrapper } from '../../components/board';
 import { contentsType } from "../../types/board";
@@ -10,10 +10,10 @@ interface BoardPreviewLayoutProps {
 }
 
 const BoardPreviewLayout: FunctionComponent<BoardPreviewLayoutProps> = ({ contentList, setIsView, setView }) => {
-  const onClick = (e:MouseEvent<Element, globalThis.MouseEvent>, id:number) => {
+  const onClick = (e: MouseEvent<Element, globalThis.MouseEvent>, id: number) => {
     e.preventDefault();
     const contents = contentList.find(contents => contents.id === id)
-    if(contents) {
+    if (contents) {
       setIsView(true);
       setView(contents);
     }
@@ -21,12 +21,14 @@ const BoardPreviewLayout: FunctionComponent<BoardPreviewLayoutProps> = ({ conten
 
   return (
     <BoardPreviewWrapper>
-      {contentList?.map((contents, index) => (
-        <BoardPreview
-          key={index} 
-          imageUrls={contents.image_urls}
-          onClick={(e) => onClick(e, contents.id)}></BoardPreview>
-      ))}
+      {contentList
+        .sort((a, b) => b.create_date - a.create_date)
+        .map((contents, index) => (
+          <BoardPreview
+            key={index}
+            imageUrls={contents.image_urls}
+            onClick={(e) => onClick(e, contents.id)}></BoardPreview>
+        ))}
     </BoardPreviewWrapper>
   );
 }

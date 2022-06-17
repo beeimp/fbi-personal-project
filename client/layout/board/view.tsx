@@ -4,8 +4,7 @@ import { ProfileAvatar } from "../../components/profile";
 import ProfileUsername from "../../components/profile/username";
 import ImageSliderLayout from '../image-slider/index';
 import { contentsType } from '../../types/board';
-import BoardCommentsLayout from './comments';
-import { useEffect } from 'react';
+import BoardCommentsInputLayout from './commentsInput';
 import BoardContentsLayout from './contents';
 interface BoardViewLayoutProps {
   setIsView: Dispatch<SetStateAction<boolean>>;
@@ -25,7 +24,7 @@ const BoardViewLayout: React.FC<BoardViewLayoutProps> = ({ setIsView, contents }
       <BoardViewHeader Avatar={<ProfileAvatar size={"50px"} />} Useranme={<ProfileUsername username="fbi-personal" />}></BoardViewHeader>
       <ImageSliderLayout wrapperRef={wrapperRef} imageUrls={contents.image_urls}></ImageSliderLayout>
       <BoardContentsLayout></BoardContentsLayout>
-      <BoardCommentsLayout></BoardCommentsLayout>
+      <BoardCommentsInputLayout></BoardCommentsInputLayout>
     </BoardViewWrapper>
   )
 };
