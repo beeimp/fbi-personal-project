@@ -29,10 +29,12 @@ contract DSGToken is KIP7 {
     mapping(uint256 => Post) public posts;
     // 작성한 포스트 매핑
     mapping(address => uint256[]) public ownPosts;
+    mapping(uint => address) public postOwner;
 
     // 댓글 매핑 - commentId -> postId -> comment
     mapping(uint256 => mapping(uint256 => Comment)) public comments;
     mapping(address => uint256[]) public ownComments;
+    mapping(uint => address) public commentOwner;
 
     constructor(
         string memory _name,
@@ -56,8 +58,10 @@ contract DSGToken is KIP7 {
 
     // 글조회
     function getPost(uint _postId) public view returns(Post memory) {
+        require(_postId < postId);
         return posts[_postId];
     }
+
     // 댓글조회
     function getComment(uint _postId, uint _commentId) public view returns(Comment memory){
         return comments[_commentId][_postId];
@@ -73,6 +77,7 @@ contract DSGToken is KIP7 {
             createDate: block.timestamp
         });
         ownPosts[msg.sender].push(postId);
+        postOwner[postId] = msg.sender;
 
         if (_imageUrls.length > 0) {
             _burn(msg.sender, 5);
@@ -92,6 +97,7 @@ contract DSGToken is KIP7 {
             createDate: block.timestamp
         });
         ownComments[msg.sender].push(commentId);
+        commentOwner[commentId] = comments[commentId][_postId].writer;
 
         _burn(msg.sender, 1);
         commentId++;
@@ -100,9 +106,9 @@ contract DSGToken is KIP7 {
     // postUpVoting
     function postUpVoting(
         uint256 _postId,
-        address _writer,
         uint256 _amount
     ) public {
+        address _writer = postOwner[_postId];
         transfer(_writer, _amount);
         posts[_postId].upVoting += _amount;
     }
@@ -110,9 +116,9 @@ contract DSGToken is KIP7 {
     // postDownVoting
     function postDownVoting(
         uint256 _postId,
-        address _writer,
         uint256 _amount
     ) public {
+        address _writer = postOwner[_postId];
         transfer(_writer, _amount);
         posts[_postId].downVoting += _amount;
     }
@@ -121,9 +127,9 @@ contract DSGToken is KIP7 {
     function commentUpVoting(
         uint256 _commentId,
         uint256 _postId,
-        address _writer,
         uint256 _amount
     ) public {
+        address _writer = commentOwner[_commentId];
         transfer(_writer, _amount);
         comments[_commentId][_postId].upVoting += _amount;
     }
@@ -132,9 +138,9 @@ contract DSGToken is KIP7 {
     function commentDownVoting(
         uint256 _commentId,
         uint256 _postId,
-        address _writer,
         uint256 _amount
     ) public {
+        address _writer = commentOwner[_commentId];
         transfer(_writer, _amount);
         comments[_commentId][_postId].downVoting += _amount;
     }
