@@ -1,12 +1,12 @@
 import { FunctionComponent } from "react";
-import Img from 'next/image';
 import { css } from '@emotion/react';
 
 interface ProfileAvatarProps {
-  size?: string
+  size?: string,
+  imageUrl?: string
 }
 
-const ProfileAvatar: FunctionComponent<ProfileAvatarProps> = ({ size = "150px" }) => {
+const ProfileAvatar: FunctionComponent<ProfileAvatarProps> = ({ size = "150px", imageUrl="" }) => {
 
   const imageWrapperStyle = css`
     display: flex;
@@ -17,6 +17,12 @@ const ProfileAvatar: FunctionComponent<ProfileAvatarProps> = ({ size = "150px" }
 
   const imageStyle = css`
     border-radius: 100%;
+    width: ${size};
+    height: ${size};
+    background-image: url(${imageUrl});
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
   `
 
   const emptyStyle = css`
@@ -29,9 +35,9 @@ const ProfileAvatar: FunctionComponent<ProfileAvatarProps> = ({ size = "150px" }
   return (
     <div css={imageWrapperStyle}>
       {
-        false
+        imageUrl !== ''
           ?
-          <Img css={imageStyle} src="/" alt="Avatar" width={size} height={size} ></Img>
+          <div css={imageStyle}></div>
           :
           <div css={emptyStyle}></div>
       }

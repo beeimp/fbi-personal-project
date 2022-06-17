@@ -3,13 +3,14 @@ import { css } from '@emotion/react';
 
 interface VotingWrapperProps {
   children: ReactNode;
+  height?: string;
 }
  
-const VotingWrapper: FunctionComponent<VotingWrapperProps> = ({children}) => {
+const VotingWrapper: FunctionComponent<VotingWrapperProps> = ({children, height}) => {
   const wrapperStyle = css`
     display: flex;
 
-    height: 50px;
+    height: ${height};
     margin: 10px;
   `;
 
