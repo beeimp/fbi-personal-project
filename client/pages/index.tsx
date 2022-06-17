@@ -20,7 +20,9 @@ const Home: NextPage<HomeProps> = ({ isAuth, _contentList}) => {
     image_urls: [],
     article: "",
     create_date: 1654962789818,
-    hashtag: []
+    hashtag: [],
+    up_voting: 0,
+    down_voting: 0
   });
   const [contentList, setContentList] = useState<contentsType[]>(_contentList);
 

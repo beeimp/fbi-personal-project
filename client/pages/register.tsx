@@ -2,17 +2,18 @@ import type {NextPage} from 'next';
 import styles from '../styles/auth.module.scss'
 import {AuthRegisterLayer} from '../layout/auth';
 import { useState } from 'react';
-import { userInfoType } from '../types/auth';
+import { registerInfoType } from '../types/user';
 const RegisterPage:NextPage = () => {
-  const [userInfo, setUserInfo] = useState<userInfoType>({
+  const [registerInfo, setRegisterInfo] = useState<registerInfoType>({
     address: "",
     useranme: "",
-    phoneNumber: ""
+    phoneNumber: "",
+    thumbnail: ""
   });
   
   return(
     <div className={styles.authWrapper}>
-      <AuthRegisterLayer title='Desogram' userInfo={userInfo} setUserInfo={setUserInfo}></AuthRegisterLayer>
+      <AuthRegisterLayer title='Desogram' registerInfo={registerInfo} setRegisterInfo={setRegisterInfo}></AuthRegisterLayer>
     </div>
   );
 }
